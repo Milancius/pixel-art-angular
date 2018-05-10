@@ -1,0 +1,25 @@
+<div style="position: relative">
+  <div >
+    <div  *ngFor="let pixel-array of pixelsArray; index as i" class="tile-container">
+      <div *ngFor="let pixel of pixelsArray[i]; index as j" class="tile picture-tiles" [id]="constant * i + j" (click)="onCLick((constant * i + j), pixel)" [style.background]="palette[pixel]">
+        <div [hidden]="pixel == 0" style="cursor: pointer" >
+          {{pixel}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 100%; height: 10px; margin: 50px 0;">
+    <div *ngFor="let p of palette; index as i" [style.background]="palette[i]" class="tile" (click)="selectColor(palette[i], i)" [hidden]="i == 0" [style.color]="decideColor(i)">
+        {{i}}
+    </div>
+  </div>
+  <div class="tile" id="selectedColor"></div>
+
+
+  <div class="static-tile" *ngIf="victoryBool == true">
+    <div class="button" (click)="closeBool()">
+      x
+    </div>
+    VICTORY!
+  </div>
+</div>
